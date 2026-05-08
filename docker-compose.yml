@@ -1,0 +1,61 @@
+services:
+
+  mysql:
+    image: mysql:8.3
+    container_name: conv_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: convoyage_db
+      MYSQL_USER: convoyage_user
+      MYSQL_PASSWORD: convoyage_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: conv_backend
+    restart: unless-stopped
+    environment:
+      FLASK_ENV: production
+      SECRET_KEY: ${SECRET_KEY:-super-secret-key}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-jwt-super-secret}
+      DATABASE_URL: mysql+pymysql://convoyage_user:convoyage_pass@mysql/convoyage_db
+      CORS_ORIGINS: http://localhost,http://localhost:80
+      TARIF_PAR_KG: ${TARIF_PAR_KG:-500}
+      DEVISE: ${DEVISE:-FCFA}
+    ports:
+      - "5000:5000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: conv_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "8181:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: conv_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:

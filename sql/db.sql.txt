@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS convoyage_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'convoyage_user'@'%' IDENTIFIED BY 'convoyage_pass';
+GRANT ALL PRIVILEGES ON convoyage_db.* TO 'convoyage_user'@'%';
+FLUSH PRIVILEGES;
