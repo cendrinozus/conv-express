@@ -1,9 +1,9 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps && chmod -R +x node_modules/.bin
 COPY . .
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
+RUN NODE_OPTIONS=--openssl-legacy-provider node node_modules/react-scripts/bin/react-scripts.js build
 
 FROM httpd:2.4
 COPY --from=builder /app/build /usr/local/apache2/htdocs/
