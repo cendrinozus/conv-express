@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <style>
+      .logo-bg { fill: #1a1a3e; }
+      .gold { fill: #D4A017; }
+      .white { fill: #ffffff; }
+      .name { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; fill: #ffffff; letter-spacing: 4px; font-size: 28px; }
+      .sub { font-family: Arial, Helvetica, sans-serif; fill: #D4A017; letter-spacing: 2px; font-size: 8px; }
+      .tag { font-family: Arial, Helvetica, sans-serif; fill: #9994cc; letter-spacing: 2px; font-size: 7px; font-style: italic; }
+      .mono { font-family: Georgia, serif; font-weight: 700; fill: #D4A017; font-size: 14px; }
+    </style>
+  </defs>
+
+  <rect width="320" height="100" rx="10" class="logo-bg"/>
+  <rect x="1" y="1" width="318" height="98" rx="9.5" fill="none" stroke="#D4A017" stroke-width="1.5"/>
+
+  <circle cx="54" cy="50" r="34" class="gold"/>
+  <circle cx="54" cy="50" r="28" class="logo-bg"/>
+  <circle cx="54" cy="50" r="26" fill="none" stroke="#D4A017" stroke-width="1"/>
+
+  <ellipse cx="54" cy="50" rx="18" ry="18" fill="none" stroke="#D4A017" stroke-width="0.8" opacity="0.5"/>
+  <ellipse cx="54" cy="50" rx="9" ry="18" fill="none" stroke="#D4A017" stroke-width="0.8" opacity="0.5"/>
+  <line x1="36" y1="50" x2="72" y2="50" stroke="#D4A017" stroke-width="0.8" opacity="0.5"/>
+  <line x1="38" y1="42" x2="70" y2="42" stroke="#D4A017" stroke-width="0.7" opacity="0.4"/>
+  <line x1="38" y1="58" x2="70" y2="58" stroke="#D4A017" stroke-width="0.7" opacity="0.4"/>
+
+  <text x="54" y="55" text-anchor="middle" class="mono">AL</text>
+
+  <text x="102" y="48" class="name">ANOLALUX</text>
+  <rect x="102" y="53" width="196" height="1.5" rx="0.75" fill="#D4A017"/>
+  <text x="102" y="67" class="sub">CENTRE INTERNATIONAL D'AFFAIRES</text>
+  <text x="102" y="80" class="tag">Le Rempart · Lomé, Togo</text>
+</svg>

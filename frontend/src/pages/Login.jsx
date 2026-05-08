@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Package, Lock, Mail, Truck, Shield, BarChart3 } from 'lucide-react';
+import { Package, Lock, Mail, Shield, BarChart3 } from 'lucide-react';
 
 export default function Login() {
   const { login } = useAuth();
@@ -28,9 +28,11 @@ export default function Login() {
     <div className="login-page">
       <div className="login-left">
         <div className="login-brand" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-            <Truck size={40} color="var(--primary)" />
-          </div>
+          <img
+            src="/anolalux-logo.svg"
+            alt="Anolalux"
+            style={{ width: '100%', maxWidth: 280, marginBottom: 24, display: 'block' }}
+          />
           <h1>Convoyage<br /><span>Express</span></h1>
           <p>Plateforme de gestion<br />de transport et livraison de colis</p>
 

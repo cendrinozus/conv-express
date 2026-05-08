@@ -3,7 +3,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   LayoutDashboard, Package, FileText, CreditCard,
-  Users, LogOut, Menu, X, MapPin, Truck, Settings
+  Users, LogOut, Menu, X, MapPin, Settings
 } from 'lucide-react';
 
 export default function Layout() {
@@ -38,12 +38,13 @@ export default function Layout() {
       {/* Sidebar */}
       <aside className={`sidebar ${open ? 'open' : ''}`}>
         <div className="sidebar-logo">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Truck size={24} color="var(--primary)" />
-            <div>
-              <h1>Convoyage</h1>
-              <span>Gestion de colis</span>
-            </div>
+          <img
+            src="/anolalux-logo.svg"
+            alt="Anolalux"
+            style={{ width: '100%', maxWidth: 200, display: 'block', margin: '0 auto 6px' }}
+          />
+          <div style={{ textAlign: 'center', fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: 1 }}>
+            Convoyage Express
           </div>
         </div>
 
@@ -94,10 +95,7 @@ export default function Layout() {
           <button className="burger" onClick={() => setOpen(true)}>
             <Menu size={22} />
           </button>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Truck size={20} color="var(--primary)" />
-            <span style={{ fontFamily: 'Syne', fontWeight: 700 }}>Convoyage</span>
-          </div>
+          <img src="/anolalux-logo.svg" alt="Anolalux" style={{ height: 32 }} />
           <div className="user-avatar" style={{ width: 32, height: 32, fontSize: '0.8rem' }}>
             {initials}
           </div>
