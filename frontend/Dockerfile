@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --legacy-peer-deps && chmod -R +x node_modules/.bin
 COPY . .
-RUN DISABLE_ESLINT_PLUGIN=true NODE_OPTIONS=--openssl-legacy-provider node node_modules/react-scripts/bin/react-scripts.js build
+RUN REACT_APP_API_URL=/api DISABLE_ESLINT_PLUGIN=true NODE_OPTIONS=--openssl-legacy-provider node node_modules/react-scripts/bin/react-scripts.js build
 
 FROM httpd:2.4
 COPY --from=builder /app/build /usr/local/apache2/htdocs/
